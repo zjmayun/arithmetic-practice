@@ -1,6 +1,8 @@
 package com.jackey.arithmetic.eleven;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 11-25
@@ -25,8 +27,22 @@ public class One {
         return index;
     }
 
+    public int[] twoSumSecond(int[] nums, int target) {
+        Map<Integer, Integer> hash = new HashMap<>();
+        for(int i = 0; i < nums.length; i++) {
+            if(hash.containsKey(target - nums[i])) {
+                return new int[]{hash.get(target - nums[i]), i};
+            }
+            hash.put(nums[i], i);
+        }
+        return new int[0];
+    }
+
     public static void main(String[] args) {
+//        One one = new One();
+//        System.out.println(Arrays.toString(one.twoSum(new int[]{3, 2, 4, 3}, 6)));
+
         One one = new One();
-        System.out.println(Arrays.toString(one.twoSum(new int[]{3, 2, 4, 3}, 6)));
+        System.out.println(Arrays.toString(one.twoSumSecond(new int[]{3, 2, 4, 3}, 6)));
     }
 }
